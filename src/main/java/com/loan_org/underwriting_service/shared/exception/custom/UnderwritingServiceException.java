@@ -1,4 +1,4 @@
-package com.loan_org.underwriting_service.shared.exception;
+package com.loan_org.underwriting_service.shared.exception.custom;
 
 /**
  * Defined as the generic exception that handles all the underwriting 
