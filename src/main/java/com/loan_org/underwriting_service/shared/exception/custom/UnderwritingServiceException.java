@@ -18,4 +18,8 @@ public class UnderwritingServiceException extends RuntimeException {
         super(e);
     }
 
+    public UnderwritingServiceException(String message) {
+        super(message);
+    }
+
 }
