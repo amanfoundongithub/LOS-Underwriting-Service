@@ -1,0 +1,93 @@
+{
+	"info": {
+		"name": "Underwriting Service API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Trigger (Create Case)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"correlationId\": \"corr-8899-7766\",\n    \"applicationId\": \"app-1122-3344\",\n    \"employmentStatus\": \"SALARIED\",\n    \"declaredMonthlyIncome\": 130000.00,\n    \"verifiedMonthlyIncome\": 120000.00,\n    \"identityVerified\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/underwriting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"underwriting"
+					]
+				},
+				"description": "Initializes a brand new underwriting record inside MongoDB from incoming verification context payloads."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Process (Async Rule Evaluation)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/underwriting/cases/evaluate/app-1122-3344",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"underwriting",
+						"cases",
+						"evaluate",
+						"app-1122-3344"
+					]
+				},
+				"description": "Fires the asynchronous virtual-thread pipeline to enrich data with Credit Bureau score checks and stamp final rule engine verdicts."
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Case By Application ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/underwriting?applicationId=app-1122-3344",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"underwriting"
+					],
+					"query": [
+						{
+							"key": "applicationId",
+							"value": "app-1122-3344"
+						}
+					]
+				},
+				"description": "Fetches the full audited execution path logs, active snapshots, and final scoring decision payload criteria for the loan case."
+			},
+			"response": []
+		}
+	]
+}
