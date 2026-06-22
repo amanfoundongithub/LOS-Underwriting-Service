@@ -1,13 +1,7 @@
 package com.loan_org.underwriting_service.shared.config;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
-import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
-import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 /**
  * Defines the MongoDB configuration associated with the Underwriting 
