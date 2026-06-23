@@ -1,6 +1,9 @@
 spring:
   application:
     name: underwriting_service
+  
+  profiles:
+    active: local
 
   mongodb:
     uri: mongodb://localhost:27017/underwriting_db
@@ -16,5 +19,8 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
 
+jwt:
+  signing_key: ${JWT_SECRET_KEY}
+  
 server:
   port: 7777
